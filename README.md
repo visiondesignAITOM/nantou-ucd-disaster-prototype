@@ -17,3 +17,10 @@
 原型參考來源：<https://nantou-disaster-pwa.visiondesignx3.chatgpt.site/v27/index.html>
 
 部署版本為單一 HTML 候選原型，CSS、JavaScript 與圖片均內嵌，不代表已完成正式資料介接或正式發布。
+
+## 2026-09-21 展示更新
+
+- 展示版本：v0.4 D「亮橘冷灰」，含響應式排版、任務圖示、資訊示意圖與防災準備 banner。
+- 插畫為設計用情境示意，不代表實際處所外觀、現場災況或地理路線。
+- 本次更新僅為原型視覺與互動展示更新；上述資料揭露與使用限制仍適用，尚未執行使用者測試。
+- `index.html` 與 `404.html` 內容相同，SHA-256：`9d4ceae0e8c2ae675f14ee31e332967914d44cdc5b6651dce25f44b8a4c3b485`。
