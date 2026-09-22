@@ -5508,6 +5508,88 @@ body.contrast .art-symbol circle:first-child {fill:#222;}
  [data-palette="citrus"] body:not(.contrast) .official-resource-row:hover {background:var(--control-tint)!important;}
  [data-palette="citrus"] body:not(.contrast) :is(.hazard-chip,.hazard-tab,.need-filter,.report-filter,.outline-btn):hover {border-color:var(--control-orange);}
 }
+
+/* Nantou UI System v0.5. Shared by D and the component reference.
+   Current D visual language; legacy migration is incremental, not complete. */
+:root {
+ --ds-canvas:#f4f5f7; --ds-surface:#ffffff; --ds-ink:#202733;
+ --ds-muted:#586476; --ds-border:#abb3bf; --ds-control-border:#7b8798; --ds-primary:#b83f08;
+ --ds-primary-hover:#963206; --ds-tint:#fff0e5; --ds-hero:#e9a16b;
+ --ds-info:#24628b; --ds-danger:#b42318; --ds-success:#246b49;
+ --ds-space-1:4px; --ds-space-2:8px; --ds-space-3:12px;
+ --ds-space-4:16px; --ds-space-5:24px; --ds-space-6:32px;
+ --ds-radius-control:12px; --ds-radius-card:20px; --ds-target:44px;
+ --ds-focus:2px solid var(--ds-primary); --ds-duration:160ms;
+}
+[data-palette="citrus"] body:not(.contrast) {
+ --ui-primary:var(--ds-primary); --control-orange:var(--ds-primary);
+ --control-border:var(--ds-control-border); --control-tint:var(--ds-tint);
+}
+.ds-button {display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:var(--ds-target);padding:10px 16px;border:1px solid var(--ds-primary);border-radius:var(--ds-radius-control);font:inherit;font-weight:600;background:var(--ds-primary);color:white;text-decoration:none;cursor:pointer;}
+.ds-button.secondary {background:var(--ds-surface);color:var(--ds-primary);}
+.ds-button:disabled {background:#e2e5e9;color:#586476;border-color:#abb3bf;cursor:not-allowed;}
+.ds-button:focus-visible,.ds-input:focus-visible {outline:var(--ds-focus);outline-offset:2px;}
+.ds-input {box-sizing:border-box;width:100%;min-height:44px;padding:12px;border:1px solid var(--ds-control-border);border-radius:12px;font:inherit;background:white;color:var(--ds-ink);}
+.ds-input[aria-invalid="true"] {border-color:var(--ds-danger);}
+.ds-card {padding:24px;background:var(--ds-surface);border:1px solid var(--ds-border);border-radius:20px;}
+@media(hover:hover) {.ds-button:not(:disabled):hover {background:var(--ds-primary-hover);color:white;}}
+/* Route headings receive programmatic focus, not the interactive control ring. */
+[data-palette="citrus"] body:not(.contrast) .unified-hero .back-btn {
+ background:var(--ds-surface)!important;color:var(--ds-ink)!important;
+ border:1px solid var(--ds-muted);border-radius:var(--ds-radius-control);
+ min-height:var(--ds-target);padding:8px 12px;
+}
+[data-palette="citrus"] body:not(.contrast) h1[tabindex="-1"]:focus {outline:none!important;}
+/* Give artwork an explicit frame: no attempt to blend raster shading into a flat fill. */
+[data-palette="citrus"] body:not(.contrast) #mainContent .view .unified-hero::before {
+ border-radius:var(--ds-radius-card);
+}
+@media(max-width:999px) {
+ [data-palette="citrus"] body:not(.contrast) #mainContent .view .unified-hero {padding-bottom:16px!important;}
+ [data-palette="citrus"] body:not(.contrast) #mainContent .view .unified-hero::after {
+  width:100%;height:auto;aspect-ratio:3/1;margin:8px 0 0;
+  border:1px solid #995c32;border-radius:12px;
+  background-size:cover;background-position:center;
+  box-sizing:border-box;flex-shrink:0;
+ }
+}
+@media(prefers-reduced-motion:reduce) {
+ .ds-button,.ds-input {transition:none;animation:none;}
+}
+.ui-field-error {color:var(--ds-danger);font-size:1rem;line-height:1.5;margin:8px 0 16px;}
+.ui-error-summary {padding:16px;margin-bottom:24px;border:1px solid var(--ds-danger);border-radius:12px;background:#fff4f2;color:var(--ds-ink);}
+.ui-error-summary a {color:var(--ds-danger);text-decoration:underline;}
+.ui-report-preview {margin:24px auto;padding:24px;max-width:820px;background:var(--ds-surface);color:var(--ds-ink);border:1px solid var(--ds-control-border);border-radius:20px;}
+.ui-report-preview dt {font-weight:700;margin-top:20px;}
+.ui-report-preview dd {margin:8px 0 24px;white-space:pre-wrap;overflow-wrap:anywhere;}
+.ui-report-preview[hidden],form[hidden],.ui-error-summary[hidden],.ui-field-error[hidden] {display:none!important;}
+[data-palette="citrus"] body:not(.contrast) [aria-invalid="true"]:is(input,textarea,select) {border:1px solid var(--ds-danger)!important;}
+body.contrast .ui-error-summary,body.contrast .ui-report-preview {background:#000;color:#fff;border-color:#fff;}
+body.contrast .ui-field-error,body.contrast .ui-error-summary a {color:#fff;}
+body.contrast .ui-report-preview .ds-button {background:#000;color:#fff;border-color:#fff;}
+
+/* Masthead is a native keyboard-operable home action. */
+[data-palette="citrus"] .topbar button.brand {
+ border:0;background:transparent;color:inherit;padding:0;
+ font:inherit;text-align:left;cursor:pointer;min-height:44px;border-radius:8px;
+}
+/* Incident content must determine height, never squeeze into a decorative ratio. */
+[data-palette="citrus"] #disasterBanner.unified-hero {aspect-ratio:auto;height:auto;}
+[data-palette="citrus"] #disasterBanner.unified-hero>* {flex-shrink:0;}
+[data-palette="citrus"] #disasterBanner:not([data-disaster-status="clear"]) .incident-meta {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+[data-palette="citrus"] #disasterBanner .incident-meta>* {min-width:0;overflow-wrap:anywhere;}
+[data-palette="citrus"] body:not(.contrast) #disasterBanner .incident-meta :is(span,strong),
+[data-palette="citrus"] body:not(.contrast) #disasterBanner .now-do-label {color:var(--ds-ink);}
+[data-palette="citrus"] body:not(.contrast) #disasterBanner .now-do {background:#fff0e5;border:1px solid #995c32;}
+[data-palette="citrus"] #disasterBanner .incident-main {min-width:0;}
+@media(min-width:1000px) {
+ [data-palette="citrus"] #disasterBanner.unified-hero {min-height:400px;justify-content:flex-start;}
+}
+@media(max-width:599px) {
+ [data-palette="citrus"] #disasterBanner:not([data-disaster-status="clear"]) .incident-meta {grid-template-columns:1fr;gap:10px;}
+ [data-palette="citrus"] #disasterBanner .incident-meta>div {display:flex;align-items:baseline;justify-content:space-between;gap:16px;}
+ [data-palette="citrus"] #disasterBanner .incident-meta strong {text-align:right;}
+}
 </style></head>
 <body class="font-level-1">
   <a class="skip-link" href="#mainContent">跳至主要內容</a>
@@ -8050,6 +8132,7 @@ body.contrast .art-symbol circle:first-child {fill:#222;}
     }
 
     function navigate(route, { replace=false, fromPop=false }={}){
+      window.dispatchEvent(new CustomEvent('ui-route-change'));
       if(!ROUTES[route]) route='home';
       const definition=ROUTES[route];
       if(definition.parent===null) state.trail=[route];
@@ -8205,7 +8288,16 @@ body.contrast .art-symbol circle:first-child {fill:#222;}
       if(closest('#locationSkip')){ skipLocation(); return; }
 
       const needFilter=closest('[data-shelter-need]');
-      if(needFilter){ state.shelterNeed=needFilter.dataset.shelterNeed; renderResults(); return; }
+      if(needFilter){
+      const selected=needFilter.dataset.shelterNeed;
+      state.shelterNeed=selected; renderResults();
+      const next=[...document.querySelectorAll('[data-shelter-need]')].find(button=>button.dataset.shelterNeed===selected);
+      if(next) next.focus({preventScroll:true});
+      const count=document.getElementById('shelterCount');
+      count.setAttribute('role','status');count.setAttribute('aria-live','polite');count.setAttribute('aria-atomic','true');
+      count.textContent=(next?next.textContent.trim()+'，':'')+count.textContent;
+      return;
+    }
 
       const resultMode=closest('[data-result-mode]');
       if(resultMode){
@@ -8782,6 +8874,13 @@ body.contrast .art-symbol circle:first-child {fill:#222;}
 (() => {
  const nav=document.querySelector('.bottom-nav');
  const header=document.querySelector('.topbar');
+ const brand=header.querySelector('.brand');
+ const homeButton=document.createElement('button');
+ homeButton.type='button';homeButton.className=brand.className;
+ homeButton.dataset.route='home';
+ homeButton.setAttribute('aria-label','南投縣政府災害情資網，返回首頁');
+ homeButton.append(...brand.childNodes);
+ brand.replaceWith(homeButton);
  const anchor=document.createComment('mobile navigation position');
  nav.before(anchor);
  const query=matchMedia('(min-width:1000px)');
@@ -8808,6 +8907,75 @@ body.contrast .art-symbol circle:first-child {fill:#222;}
  }
  query.addEventListener('change',positionNavigation);
  positionNavigation();
+})();
+</script><script>/* UI System v0.5: bounded local form flows; no transmission or persistence. */
+(() => {
+ const count=document.getElementById('shelterCount');
+ if(count) {count.setAttribute('role','status');count.setAttribute('aria-live','polite');count.setAttribute('aria-atomic','true');}
+ const forms=[...document.querySelectorAll('#reportForm,#familyMeetingForm,#familyRoutesForm,#familyContactForm,#medicineForm')];
+ function fields(form) {return [...form.querySelectorAll('input,textarea,select')].filter(el=>el.willValidate);}
+ function label(el) {return el.labels?.[0]?.textContent.trim() || '此欄位';}
+ function validate(el) {
+  el.setCustomValidity('');
+  if(el.required && !['radio','checkbox'].includes(el.type) && !el.value.trim()) el.setCustomValidity('請填寫'+label(el)+'。');
+  const id=el.id+'-ui-error';
+  let note=document.getElementById(id);
+  const invalid=!el.validity.valid;
+  if(invalid && !note) {note=document.createElement('p');note.id=id;note.className='ui-field-error';el.after(note);}
+  if(note) {note.textContent=invalid?(el.validationMessage || '請檢查此欄位。'):'';note.hidden=!invalid;}
+  const described=(el.getAttribute('aria-describedby')||'').split(/\s+/).filter(x=>x&&x!==id);
+  if(invalid) {el.setAttribute('aria-invalid','true');described.push(id);} else el.removeAttribute('aria-invalid');
+  if(described.length) el.setAttribute('aria-describedby',described.join(' '));else el.removeAttribute('aria-describedby');
+  return !invalid;
+ }
+ function summary(form) {
+  let box=form.querySelector('.ui-error-summary');
+  if(!box) {box=document.createElement('div');box.className='ui-error-summary';box.setAttribute('role','alert');form.prepend(box);}
+  const invalid=fields(form).filter(el=>el.getAttribute('aria-invalid')==='true');
+  const signature=invalid.map(el=>el.id).join('|');
+  if(box.dataset.signature===signature)return;
+  box.dataset.signature=signature;
+  box.replaceChildren();box.hidden=!invalid.length;
+  if(invalid.length) {
+   const title=document.createElement('strong');title.textContent='請確認以下 '+invalid.length+' 個欄位';box.append(title);
+   const list=document.createElement('ul');
+   invalid.forEach(el=>{const li=document.createElement('li'),a=document.createElement('a');a.href='#'+el.id;a.textContent=label(el);a.addEventListener('click',e=>{e.preventDefault();el.focus();});li.append(a);list.append(li);});
+   box.append(list);
+  }
+ }
+ forms.forEach(form=>{
+  form.noValidate=true;
+  form.addEventListener('input',e=>{
+   if(form.dataset.uiAttempted && e.target.matches('input,textarea,select')) {validate(e.target);summary(form);}
+  });
+  form.addEventListener('reset',()=>{delete form.dataset.uiAttempted;fields(form).forEach(el=>{el.setCustomValidity('');el.removeAttribute('aria-invalid');const id=el.id+'-ui-error';const refs=(el.getAttribute('aria-describedby')||'').split(/\s+/).filter(x=>x&&x!==id);if(refs.length)el.setAttribute('aria-describedby',refs.join(' '));else el.removeAttribute('aria-describedby');});form.querySelectorAll('.ui-field-error,.ui-error-summary').forEach(el=>el.remove());});
+ });
+ const report=document.getElementById('reportForm');
+ const preview=document.createElement('section');preview.className='ui-report-preview';preview.hidden=true;preview.setAttribute('aria-labelledby','reportPreviewTitle');report.after(preview);
+ function edit() {preview.hidden=true;report.hidden=false;report.querySelector('[type="submit"]').focus();}
+ function showPreview() {
+  preview.replaceChildren();
+  const title=document.createElement('h2');title.id='reportPreviewTitle';title.tabIndex=-1;title.textContent='通報內容預覽';preview.append(title);
+  const values=[
+   ['通報類型',report.querySelector('input[name="type"]:checked')?.value || '未選擇'],
+   ['發生位置',document.getElementById('reportLocation').value.trim()],
+   ['現場描述',document.getElementById('reportDesc').value.trim()],
+   ['現場照片',document.getElementById('reportPhoto').files[0]?.name || '未附照片']
+  ];
+  const dl=document.createElement('dl');values.forEach(([name,value])=>{const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=name;dd.textContent=value;dl.append(dt,dd);});preview.append(dl);
+  const back=document.createElement('button');back.type='button';back.className='ds-button secondary';back.textContent='返回修改';back.addEventListener('click',edit);preview.append(back);
+  report.hidden=true;preview.hidden=false;title.focus();
+ }
+ document.addEventListener('submit',event=>{
+  const form=event.target;if(!forms.includes(form))return;
+  form.dataset.uiAttempted='true';
+  const valid=fields(form).map(validate).every(Boolean);summary(form);
+  if(!valid) {event.preventDefault();event.stopImmediatePropagation();fields(form).find(el=>!el.validity.valid)?.focus();return;}
+  if(form===report) {event.preventDefault();event.stopImmediatePropagation();showPreview();}
+ },true);
+ function clearPreview() {preview.hidden=true;report.hidden=false;preview.replaceChildren();}
+ window.addEventListener('ui-route-change',clearPreview);
+ window.addEventListener('hashchange',clearPreview);
 })();
 </script></body>
 </html>
