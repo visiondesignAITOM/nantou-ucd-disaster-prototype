@@ -5402,6 +5402,32 @@ body.contrast .art-symbol circle:first-child {fill:#222;}
 @media print {[data-palette="citrus"] .topbar {display:none!important;}}
 
 /* Stronger hero hierarchy and same-row desktop masthead. */
+/* Mobile hero: readable copy first, dedicated illustration strip second. */
+@media(max-width:999px) {
+ [data-palette="citrus"] .view .unified-hero,
+ [data-palette="citrus"] #disasterBanner.unified-hero,
+ [data-palette="citrus"] #prepareView .unified-hero {display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;position:relative;isolation:isolate;gap:10px;padding:20px 20px 0!important;margin:12px 12px 20px;min-height:0;overflow:hidden;border-radius:20px;}
+ [data-palette="citrus"] body:not(.contrast) #mainContent .view .unified-hero {background:#e9a16b!important;border:1px solid #ce8650;}
+ [data-palette="citrus"] .unified-hero>* {width:100%;max-width:none;min-width:0;margin:0;}
+ [data-palette="citrus"] .unified-hero :is(h1,p) {width:100%;max-width:none;}
+ [data-palette="citrus"] .unified-hero h1 {font-size:26px!important;line-height:1.4!important;letter-spacing:0;}
+ [data-palette="citrus"] .unified-hero p {font-size:16px!important;line-height:1.6;}
+ [data-palette="citrus"] body:not(.contrast) .unified-hero :is(h1,p,.hero-source,.place-current,.place-current strong,.place-current span) {color:#202733!important;}
+ [data-palette="citrus"] .unified-hero>.page-art,
+ [data-palette="citrus"] .unified-hero>.visual-home-art,
+ [data-palette="citrus"] .unified-hero>.prepare-banner-image {display:none!important;}
+ [data-palette="citrus"] .view .unified-hero::after {content:"";display:block;position:static;inset:auto;transform:none;border:0;border-radius:0;opacity:1;flex:none;order:10;height:150px;width:calc(100% + 40px);margin:0 -20px;background-image:var(--hero-art);background-size:auto 100%;background-position:right center;background-repeat:no-repeat;pointer-events:none;}
+ [data-palette="citrus"] #disasterBanner .incident-main {margin:0;padding:0;}
+ [data-palette="citrus"] #disasterBanner .hero-source {font-size:13px;margin:0;}
+ [data-palette="citrus"] #disasterBanner .visual-primary {width:100%;min-height:48px;margin:2px 0 0;}
+ [data-palette="citrus"] #disasterBanner .place-current {padding:0 0 10px;min-height:48px;}
+ [data-palette="citrus"] .view .report-intro.unified-hero::after {height:120px;}
+ [data-palette="citrus"] .unified-hero>.emergency-call,
+ [data-palette="citrus"] .unified-hero>.report-hub-cta {padding:14px;border-radius:12px;}
+ [data-palette="citrus"] body:not(.contrast) #disasterBanner:not([data-disaster-status="clear"]) {border:2px solid #a52b2b;}
+ [data-palette="citrus"] body.contrast .unified-hero {background:#000!important;border:1px solid #fff;padding-bottom:20px!important;}
+ [data-palette="citrus"] body.contrast .unified-hero::after {display:none;}
+}
 [data-palette="citrus"] {--hero-surface:#e9a16b;--hero-ink:#202733;}
 [data-palette="citrus"] #prepareView .illustrated-banner {background:var(--hero-surface);}
 @media(min-width:1000px) {
