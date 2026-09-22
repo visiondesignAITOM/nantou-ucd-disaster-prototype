@@ -5468,6 +5468,46 @@ body.contrast .art-symbol circle:first-child {fill:#222;}
  [data-palette="citrus"] .topbar .bottom-nav {flex:1 1 auto;justify-content:flex-end;}
  [data-palette="citrus"] .topbar .nav-btn {padding:12px 10px;}
 }
+
+/* D: distinct controls and one consistent, visible focus ring. */
+[data-palette="citrus"] {--control-border:#abb3bf;--control-orange:#b83f08;--control-tint:#fff0e5;}
+[data-palette="citrus"] body:not(.contrast) :focus-visible {
+ outline:2px solid var(--control-orange)!important;outline-offset:2px!important;box-shadow:none!important;
+}
+[data-palette="citrus"] body:not(.contrast) :is(input,textarea,select) {
+ accent-color:var(--control-orange);caret-color:var(--control-orange);
+}
+[data-palette="citrus"] body:not(.contrast) :is(.input,.textarea,select):not([aria-invalid="true"]) {
+ border:1px solid var(--control-border);background:#fff;color:var(--ui-text);
+}
+[data-palette="citrus"] body:not(.contrast) :is(.input,.textarea,select):focus:not([aria-invalid="true"]) {
+ border-color:var(--control-orange);outline:2px solid var(--control-orange)!important;outline-offset:2px!important;box-shadow:none!important;
+}
+[data-palette="citrus"] body:not(.contrast) ::selection {background:#f9bc8d;color:#202733;}
+[data-palette="citrus"] body:not(.contrast) .official-resource-list {background:transparent;box-shadow:none;border:0;overflow:visible;display:grid;gap:10px;}
+[data-palette="citrus"] body:not(.contrast) .official-resource-row {
+ min-height:52px;padding:14px 16px;background:#fff!important;color:var(--control-orange)!important;
+ border:1px solid var(--control-orange);border-radius:12px;box-shadow:0 2px 4px #20273308;
+}
+[data-palette="citrus"] body:not(.contrast) .official-resource-row :is(strong,.official-resource-chevron) {color:inherit;}
+[data-palette="citrus"] .official-resource-row::after {display:none;}
+[data-palette="citrus"] body:not(.contrast) :is(.hazard-chip,.hazard-tab,.need-filter,.report-filter,.outline-btn) {
+ background:#fff;color:var(--control-orange);border:1px solid var(--control-border);box-shadow:none;
+}
+[data-palette="citrus"] body:not(.contrast) :is(.hazard-chip[data-active="true"],.hazard-tab[aria-pressed="true"],.need-filter.active,.report-filter.active,.view-toggle button.active,.font-choice button.active) {
+ background:var(--control-orange);color:#fff;border:1px solid var(--control-orange);box-shadow:none;
+}
+[data-palette="citrus"] body:not(.contrast) :is(.hazard-chip[data-active="true"],.hazard-tab[aria-pressed="true"],.need-filter.active,.report-filter.active) .icon {color:inherit;}
+[data-palette="citrus"] body:not(.contrast) #homeView .priority-prep {border:1px solid #d9976a;color:#202733;}
+[data-palette="citrus"] #disasterBanner .incident-main {border:0!important;padding-top:0;}
+[data-palette="citrus"] #disasterBanner .place-current {border-bottom:1px solid #80532f66!important;border-radius:0;padding-bottom:16px!important;margin-bottom:8px;}
+[data-palette="citrus"] body.contrast #disasterBanner .place-current {border-bottom-color:#fff!important;}
+[data-palette="citrus"] #homeView .home-section {border-top:0;padding-top:20px;padding-bottom:20px;}
+[data-palette="citrus"] #homeView .visual-details {border-top:1px solid #cbd1d9;padding-top:20px;margin-top:12px;}
+@media(hover:hover) {
+ [data-palette="citrus"] body:not(.contrast) .official-resource-row:hover {background:var(--control-tint)!important;}
+ [data-palette="citrus"] body:not(.contrast) :is(.hazard-chip,.hazard-tab,.need-filter,.report-filter,.outline-btn):hover {border-color:var(--control-orange);}
+}
 </style></head>
 <body class="font-level-1">
   <a class="skip-link" href="#mainContent">跳至主要內容</a>
